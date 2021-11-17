@@ -1,7 +1,10 @@
 package com.javabrains.demo.Service;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -26,7 +29,11 @@ public class MyUserDetailsServiceImpl implements UserDetailsService, MyUserDetai
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return new User("foo", "foo", new ArrayList<>());
+		AppUser user = userRepo.findByUsername(username);
+		List<GrantedAuthority> authorities= user.getRoles().stream()
+				.map(role->new SimpleGrantedAuthority(role.getName()))
+				.collect(Collectors.toList());
+		return new User(user.getUsername(), user.getPassword(), authorities);
 	}
 	
 	@Override
