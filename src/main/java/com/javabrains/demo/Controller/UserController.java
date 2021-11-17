@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javabrains.demo.Model.AuthenticationRequest;
 import com.javabrains.demo.Model.AuthenticationResponse;
-import com.javabrains.demo.Service.MyUserDetailsService;
+import com.javabrains.demo.Service.MyUserDetailsServiceImpl;
 import com.javabrains.demo.Utils.JWTUtils;
 
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class UserController {
 	
-	private final MyUserDetailsService userDetailsService;
+	private final MyUserDetailsServiceImpl userDetailsService;
 	private final AuthenticationManager authenticationManagerBean;
 	private final JWTUtils jwtUtils; 
 	

@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.javabrains.demo.JwtRequestFilter;
-import com.javabrains.demo.Service.MyUserDetailsService;
+import com.javabrains.demo.Service.MyUserDetailsServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	private final MyUserDetailsService myUserDetailsService;
+	private final MyUserDetailsServiceImpl myUserDetailsService;
 	private final JwtRequestFilter jwtRequestFilter;
 	
 	
