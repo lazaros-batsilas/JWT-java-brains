@@ -2,8 +2,10 @@ package com.javabrains.demo.Utils;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -40,6 +42,15 @@ public class JWTUtils {
 	
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
+		List<String> roles = userDetails.getAuthorities().stream()
+				   .map(authority->authority.getAuthority())
+				   .collect(Collectors.toList());
+		claims.put("roles", roles);				   
+		return createToken(claims, userDetails.getUsername());
+	}
+	
+	public String generateRefreshToken(UserDetails userDetails) {
+		Map<String, Object> claims = new HashMap<>();				   
 		return createToken(claims, userDetails.getUsername());
 	}
 	
@@ -47,6 +58,7 @@ public class JWTUtils {
 		return Jwts.builder().setClaims(claims).setSubject(subject)
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis()+1000*60*60*10))
+				
 				.signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
 	}
 	
