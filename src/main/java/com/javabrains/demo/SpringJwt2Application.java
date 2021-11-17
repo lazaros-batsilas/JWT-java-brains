@@ -26,18 +26,18 @@ public class SpringJwt2Application {
 			userDetailsService.saveRole(new Role(null, "ROLE_ADMIN"));
 			userDetailsService.saveRole(new Role(null, "ROLE_SUPER_ADMIN"));
 			
-//			userDetailsService.saveUser(new AppUser(null, "John Travolta", "john", "pass", new ArrayList<Role>()));
-//			userDetailsService.saveUser(new AppUser(null, "Will Smith", "will", "pass", new ArrayList<Role>()));
-//			userDetailsService.saveUser(new AppUser(null, "Jim Carey", "jim", "pass", new ArrayList<Role>()));
-//			userDetailsService.saveUser(new AppUser(null, "Arnold Schwarzenegger", "arnold", "pass", new ArrayList<Role>()));
-//
-//			userDetailsService.addRoleToUser("john", "ROLE_USER");
-//			userDetailsService.addRoleToUser("john", "ROLE_MANAGER");
-//			userDetailsService.addRoleToUser("will", "ROLE_MANAGER");
-//			userDetailsService.addRoleToUser("jim", "ROLE_ADMIN");
-//			userDetailsService.addRoleToUser("arnold", "ROLE_SUPER_ADMIN");
-//			userDetailsService.addRoleToUser("arnold", "ROLE_ADMIN");
-//			userDetailsService.addRoleToUser("arnold", "ROLE_USER");
+			userDetailsService.saveUser(new AppUser(null, "John Travolta", "john", "pass", new ArrayList<Role>()));
+			userDetailsService.saveUser(new AppUser(null, "Will Smith", "will", "pass", new ArrayList<Role>()));
+			userDetailsService.saveUser(new AppUser(null, "Jim Carey", "jim", "pass", new ArrayList<Role>()));
+			userDetailsService.saveUser(new AppUser(null, "Arnold Schwarzenegger", "arnold", "pass", new ArrayList<Role>()));
+
+			userDetailsService.addRoleToUser("john", "ROLE_USER");
+			userDetailsService.addRoleToUser("john", "ROLE_MANAGER");
+			userDetailsService.addRoleToUser("will", "ROLE_MANAGER");
+			userDetailsService.addRoleToUser("jim", "ROLE_ADMIN");
+			userDetailsService.addRoleToUser("arnold", "ROLE_SUPER_ADMIN");
+			userDetailsService.addRoleToUser("arnold", "ROLE_ADMIN");
+			userDetailsService.addRoleToUser("arnold", "ROLE_USER");
 
 		};
 	}
